@@ -16,6 +16,7 @@ import store from "./store";
 import OpenHands from "./api/open-hands";
 import { displayErrorToast } from "./utils/custom-toast-handlers";
 import { queryClient } from "./query-client-config";
+import LoginFe from "./components/features/guards/login-fe";
 
 function PosthogInit() {
   const [posthogClientKey, setPosthogClientKey] = React.useState<string | null>(
@@ -63,13 +64,15 @@ prepareApp().then(() =>
     hydrateRoot(
       document,
       <StrictMode>
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <HydratedRouter />
-            <PosthogInit />
-            <div id="modal-portal-exit" />
-          </QueryClientProvider>
-        </Provider>
+        <LoginFe username="amin" password="Amin123">
+          <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+              <HydratedRouter />
+              <PosthogInit />
+              <div id="modal-portal-exit" />
+            </QueryClientProvider>
+          </Provider>
+        </LoginFe>
       </StrictMode>,
     );
   }),
