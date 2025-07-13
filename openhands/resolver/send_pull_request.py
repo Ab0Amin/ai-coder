@@ -178,13 +178,13 @@ def make_commit(repo_dir: str, issue: Issue, issue_type: str) -> None:
     if not result.stdout.strip():
         # If username is not set, configure git
         subprocess.run(
-            f'git -C {repo_dir} config user.name "openhands" && '
-            f'git -C {repo_dir} config user.email "openhands@all-hands.dev" && '
+            f'git -C {repo_dir} config user.name "Amin ai code Bot" && '
+            f'git -C {repo_dir} config user.email "ahmed.amin.abd.elwadod@gmail.com" && '
             f'git -C {repo_dir} config alias.git "git --no-pager"',
             shell=True,
             check=True,
         )
-        logger.info('Git user configured as openhands')
+        logger.info('Git user configured as Amin ai code Bot')
 
     # Add all changes to the git index
     result = subprocess.run(
