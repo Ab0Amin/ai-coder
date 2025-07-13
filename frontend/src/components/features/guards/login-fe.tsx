@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface LoginFeProps {
   children: React.ReactNode;
@@ -17,12 +17,33 @@ export default function LoginFe({
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState("");
 
+  // Check localStorage on component mount
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("loginAuth");
+    if (storedAuth) {
+      const authData = JSON.parse(storedAuth);
+      if (authData.isAuthenticated) {
+        setIsAuthenticated(true);
+      }
+    }
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (inputUsername === username && inputPassword === password) {
       setIsAuthenticated(true);
       setError("");
+
+      // Save to localStorage
+      localStorage.setItem(
+        "loginAuth",
+        JSON.stringify({
+          isAuthenticated: true,
+          username: inputUsername,
+          timestamp: Date.now(),
+        }),
+      );
     } else {
       setError("Invalid username or password");
     }
