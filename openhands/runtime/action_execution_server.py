@@ -347,10 +347,10 @@ class ActionExecutor:
             if is_windows:
                 # Windows, local - split into separate commands
                 INIT_COMMANDS.append(
-                    'git config --file ./.git_config user.name "openhands"'
+                    'git config --file ./.git_config user.name "Amin AI Coder Bot"'
                 )
                 INIT_COMMANDS.append(
-                    'git config --file ./.git_config user.email "openhands@all-hands.dev"'
+                    'git config --file ./.git_config user.email "ahmed.amin.abd.elwadod@gmail.com"'
                 )
                 INIT_COMMANDS.append(
                     '$env:GIT_CONFIG = (Join-Path (Get-Location) ".git_config")'
@@ -358,16 +358,16 @@ class ActionExecutor:
             else:
                 # Linux/macOS, local
                 base_git_config = (
-                    'git config --file ./.git_config user.name "openhands" && '
-                    'git config --file ./.git_config user.email "openhands@all-hands.dev" && '
+                    'git config --file ./.git_config user.name "Amin AI Coder Bot" && '
+                    'git config --file ./.git_config user.email "ahmed.amin.abd.elwadod@gmail.com" && '
                     'export GIT_CONFIG=$(pwd)/.git_config'
                 )
                 INIT_COMMANDS.append(base_git_config)
         else:
             # Non-local (implies Linux/macOS)
             base_git_config = (
-                'git config --global user.name "openhands" && '
-                'git config --global user.email "openhands@all-hands.dev"'
+                'git config --global user.name "Amin AI Coder Bot" && '
+                'git config --global user.email "ahmed.amin.abd.elwadod@gmail.com"'
             )
             INIT_COMMANDS.append(base_git_config)
 
