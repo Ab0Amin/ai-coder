@@ -64,7 +64,10 @@ prepareApp().then(() =>
     hydrateRoot(
       document,
       <StrictMode>
-        <LoginFe username="amin" password="Amin123">
+        <LoginFe
+          username={import.meta.env.VITE_USERNAME}
+          password={import.meta.env.VITE_PASSWORD}
+        >
           <Provider store={store}>
             <QueryClientProvider client={queryClient}>
               <HydratedRouter />
